@@ -1,0 +1,10 @@
+--DATA CLEANING
+
+ALTER TABLE year_2018_full
+RENAME COLUMN zHhbg TO hotel;
+
+ALTER TABLE year_2019_full
+RENAME COLUMN zHhbg TO hotel;
+
+ALTER TABLE year_2020_full
+RENAME COLUMN zHhbg TO hotel;
