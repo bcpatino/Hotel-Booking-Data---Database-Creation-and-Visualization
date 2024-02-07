@@ -1,0 +1,18 @@
+--CREATING A TABLE FOR DATA ANALYSIS AND VISUALIZATION IN POWER BI
+
+ALTER TABLE meal_cost
+RENAME COLUMN meal TO meal1;
+
+ALTER TABLE market_segment
+RENAME COLUMN market_segment TO market_segment1;
+
+WITH hotel_data AS  
+(SELECT * FROM year_2018_full
+	 UNION SELECT * FROM year_2019_full
+	 UNION SELECT * FROM year_2020_full)
+
+SELECT * FROM hotel_data
+	LEFT JOIN public.market_segment
+	on hotel_data.market_segment = market_segment.market_segment1
+	LEFT JOIN public.meal_cost
+	on meal_cost.meal1 = hotel_data.meal
