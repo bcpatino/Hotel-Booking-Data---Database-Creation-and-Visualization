@@ -1,0 +1,13 @@
+--EXPLORATORY DATA ANALYSIS IN SQL
+--1. Is the hotel growing in revenue?
+
+with hotel_data AS 
+(SELECT * FROM year_2018_full
+	 UNION SELECT * FROM year_2019_full
+	 UNION SELECT * FROM year_2020_full)
+
+SELECT hotel_data.arrival_date_year, hotel_data.hotel,
+SUM((hotel_data.stays_in_weekend_nights + hotel_data.stays_in_week_nights) 
+	* hotel_data.adr)  as revenue 
+	FROM hotel_data
+	GROUP BY hotel_data.arrival_date_year, hotel_data.hotel;
